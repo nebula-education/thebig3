@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Big 3 · Sun, Moon, Ascendant · Nebula Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Questrial&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0c1118;
+  --navy2:#141d2b;
+  --cream:#f0ebe0;
+  --cream-70:rgba(240,235,224,.70);
+  --cream-40:rgba(240,235,224,.40);
+  --cream-18:rgba(240,235,224,.18);
+  --cream-10:rgba(240,235,224,.10);
+  --cream-06:rgba(240,235,224,.06);
+  --purple:#7B6FE8;
+  --purple-light:rgba(123,111,232,.18);
+  --purple-dim:rgba(123,111,232,.10);
+  --coral:#E8604C;
+  --cyan:#4FC3F7;
+  --magenta:#E040FB;
+  --green:#6FFFB0;
+  --gold:#FFD54F;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--navy);
+  color:var(--cream);
+  font-family:'Questrial',sans-serif;
+  font-size:16px;
+  line-height:1.75;
+  overflow-x:hidden;
+}
+h1,h2,h3,.when-label,.ex-q{font-family:'Lora',serif;font-weight:600;line-height:1.15}
+h1{font-size:clamp(2.4rem,6vw,4.5rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(1.7rem,3.5vw,2.7rem);letter-spacing:-.005em;white-space:pre-line}
+h3{font-size:clamp(1.1rem,2vw,1.5rem)}
+
+/* SIDE NAV */
+.side-nav{
+  position:fixed;right:22px;top:50%;transform:translateY(-50%);
+  z-index:40;display:flex;flex-direction:column;gap:14px;
+}
+.dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--cream-18);cursor:pointer;
+  transition:all .25s ease;border:none;
+}
+.dot:hover{background:var(--cream-40);transform:scale(1.3)}
+.dot.on{background:var(--purple);box-shadow:0 0 0 4px var(--purple-light);transform:scale(1.2)}
+@media(max-width:900px){.side-nav{display:none}}
+
+/* SECTION BASE */
+section{position:relative;padding:96px 28px;max-width:1200px;margin:0 auto}
+.eyebrow{
+  display:inline-block;
+  font-family:'Questrial',sans-serif;font-size:.78rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cream-70);
+  padding-bottom:6px;border-bottom:1px solid var(--cream-18);
+  margin-bottom:24px;
+}
+.fade{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.fade.in{opacity:1;transform:translateY(0)}
+
+/* BLOBS */
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;pointer-events:none;z-index:0}
+.blob-purple-r{width:520px;height:520px;background:var(--purple);right:-180px;top:-120px;opacity:.30}
+.blob-coral-r{width:380px;height:380px;background:var(--coral);right:-80px;bottom:-120px;opacity:.22}
+.blob-cyan-r{width:420px;height:420px;background:var(--cyan);right:-150px;top:120px;opacity:.20}
+.blob-green-l{width:380px;height:380px;background:var(--green);left:-120px;bottom:-100px;opacity:.18}
+.blob-gold-l{width:380px;height:380px;background:var(--gold);left:-140px;top:50px;opacity:.18}
+.blob-green-r{width:420px;height:420px;background:var(--green);right:-160px;top:80px;opacity:.18}
+.blob-magenta-l{width:400px;height:400px;background:var(--magenta);left:-140px;bottom:-100px;opacity:.20}
+
+/* HERO */
+.hero{min-height:88vh;display:flex;align-items:center;padding-top:60px;padding-bottom:60px;position:relative}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;width:100%}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 14px;border:1px solid var(--cream-18);
+  border-radius:999px;background:var(--cream-06);
+  font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--cream-70);margin-bottom:28px;
+}
+.hero-tag .star{color:var(--gold);font-size:1rem}
+.hero-lead{
+  margin-top:30px;max-width:560px;
+  color:var(--cream-70);font-size:1.12rem;line-height:1.7;
+}
+.hero-deco{position:relative;display:flex;justify-content:center;align-items:center;min-height:380px}
+.hero-deco svg{width:100%;max-width:380px;height:auto}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:30px}
+  .hero-deco{order:-1;min-height:260px}
+  .hero-deco svg{max-width:280px}
+}
+
+/* OVERVIEW */
+.overview-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px;
+}
+.ov-item{
+  position:relative;padding:32px 30px;
+  border:1px solid var(--cream-18);
+  background:var(--cream-06);
+  border-radius:18px;cursor:pointer;
+  transition:all .35s ease;text-decoration:none;color:inherit;
+  display:block;overflow:hidden;
+}
+.ov-item:hover{transform:translateY(-4px);border-color:var(--cream-40);background:var(--cream-10)}
+.ov-icon{
+  display:flex;width:60px;height:60px;
+  border-radius:14px;background:var(--cream-06);
+  border:1px solid var(--cream-18);
+  align-items:center;justify-content:center;
+  margin-bottom:18px;
+}
+.ov-icon svg{width:42px;height:42px}
+.ov-num{
+  font-family:'Lora',serif;font-style:italic;font-size:1.2rem;
+  margin-bottom:14px;display:block;
+}
+.ov-item.magenta .ov-num{color:var(--magenta)}
+.ov-item.purple .ov-num{color:var(--purple)}
+.ov-item.gold .ov-num{color:var(--gold)}
+.ov-item.coral .ov-num{color:var(--coral)}
+.ov-label{font-family:'Lora',serif;font-size:1.4rem;font-weight:600;line-height:1.25;color:var(--cream);margin-bottom:8px;display:block}
+.ov-sub{color:var(--cream-70);font-size:.95rem;line-height:1.55}
+.ov-arrow{
+  position:absolute;right:24px;bottom:24px;
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid var(--cream-18);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cream-70);transition:all .3s;
+}
+.ov-item:hover .ov-arrow{border-color:var(--cream);color:var(--cream);transform:translate(3px,-3px)}
+@media(max-width:700px){.overview-grid{grid-template-columns:1fr}}
+
+/* DIVIDER */
+.div-block{
+  position:relative;padding:140px 28px;text-align:left;max-width:1200px;margin:0 auto;
+}
+.div-block h2{position:relative;z-index:2;max-width:900px}
+.div-block .eyebrow-big{
+  font-family:'Lora',serif;font-style:italic;font-size:1rem;
+  color:var(--cream-40);letter-spacing:.04em;
+  margin-bottom:20px;display:block;text-transform:none;
+  border:none;padding:0;
+}
+.div-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1.3fr .9fr;gap:48px;align-items:center;
+}
+.div-art{display:flex;justify-content:center;align-items:center}
+.div-art svg{width:100%;max-width:280px;height:auto}
+@media(max-width:900px){
+  .div-inner{grid-template-columns:1fr}
+  .div-art{order:-1}
+  .div-art svg{max-width:200px}
+}
+
+/* TRINITY PANELS (inspired by slide 9) */
+.trinity{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;
+}
+.trin-card{
+  position:relative;border-radius:20px;overflow:hidden;
+  border:1px solid var(--cream-18);
+  aspect-ratio:3/4.6;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:20px;transition:transform .35s ease,border-color .35s ease;
+}
+.trin-card:hover{transform:translateY(-4px);border-color:var(--cream-40)}
+.trin-art{
+  position:absolute;inset:0;z-index:1;
+}
+.trin-art svg{width:100%;height:100%;display:block}
+.trin-cap{
+  position:relative;z-index:2;
+  background:var(--cream);color:var(--navy);
+  padding:14px 16px;border-radius:12px;
+  font-family:'Lora',serif;font-weight:600;font-size:.95rem;line-height:1.35;
+}
+.trin-cap em{display:block;font-family:'Questrial',sans-serif;font-style:normal;
+  font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--coral);margin-bottom:4px;font-weight:400;
+}
+.trin-card.moon .trin-cap em{color:#1d6bb0}
+.trin-card.asc .trin-cap em{color:#3b8a4a}
+@media(max-width:700px){
+  .trinity{grid-template-columns:1fr;gap:14px}
+  .trin-card{aspect-ratio:auto;min-height:200px}
+}
+
+/* CONCEPT BOX */
+.concept-box{
+  margin-top:30px;padding:36px 38px;
+  background:linear-gradient(135deg,var(--cream-06),var(--cream-10));
+  border:1px solid var(--cream-18);
+  border-radius:20px;
+  font-size:1.05rem;line-height:1.75;color:var(--cream);
+  max-width:760px;
+}
+.concept-box .lead-em{
+  font-family:'Lora',serif;font-style:italic;font-size:1.18rem;
+  color:var(--cream);display:block;margin-bottom:14px;
+}
+.concept-box .accent-line{
+  display:block;margin-top:18px;padding-top:18px;
+  border-top:1px solid var(--cream-18);
+  color:var(--cream-70);font-size:.98rem;
+}
+
+/* COMPARE GRID */
+.compare-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px;
+}
+.cmp-card{
+  padding:32px 28px;border-radius:18px;
+  border:1px solid var(--cream-18);background:var(--cream-06);
+}
+.cmp-card .cmp-tag{
+  font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:12px;display:block;
+}
+.cmp-card.cyan{border-color:rgba(79,195,247,.30)}
+.cmp-card.cyan .cmp-tag{color:var(--cyan)}
+.cmp-card.green{border-color:rgba(111,255,176,.30)}
+.cmp-card.green .cmp-tag{color:var(--green)}
+.cmp-card h3{font-family:'Lora',serif;margin-bottom:12px}
+.cmp-card p{color:var(--cream-70);font-size:.98rem}
+@media(max-width:700px){.compare-grid{grid-template-columns:1fr}}
+
+/* SPREAD GRID (3 BIG-3 CARDS) */
+.spread-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;
+}
+.pos{
+  padding:30px 26px;border-radius:18px;cursor:pointer;
+  border:1px solid var(--cream-18);background:var(--cream-06);
+  transition:all .35s ease;position:relative;overflow:hidden;
+}
+.pos:hover{transform:translateY(-4px);background:var(--cream-10)}
+.pos .glyph{
+  font-size:2.4rem;display:block;margin-bottom:14px;line-height:1;
+}
+.pos .badge{
+  display:inline-block;padding:5px 12px;border-radius:999px;
+  font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.pos.f .badge{background:rgba(224,64,251,.16);color:var(--magenta);border:1px solid rgba(224,64,251,.30)}
+.pos.t .badge{background:rgba(123,111,232,.16);color:var(--purple);border:1px solid rgba(123,111,232,.30)}
+.pos.a .badge{background:rgba(79,195,247,.16);color:var(--cyan);border:1px solid rgba(79,195,247,.30)}
+.pos.gold-b .badge{background:rgba(255,213,79,.14);color:var(--gold);border:1px solid rgba(255,213,79,.30)}
+.pos.coral-b .badge{background:rgba(232,96,76,.14);color:var(--coral);border:1px solid rgba(232,96,76,.30)}
+.pos.purple-b .badge{background:rgba(123,111,232,.16);color:var(--purple);border:1px solid rgba(123,111,232,.30)}
+.pos h3{margin-bottom:10px}
+.pos p.pos-q{color:var(--cream-70);font-size:.95rem;line-height:1.6;font-style:italic;font-family:'Lora',serif}
+.pos-detail{
+  max-height:0;overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;
+  opacity:0;
+}
+.pos.open .pos-detail{max-height:600px;opacity:1;margin-top:18px}
+.pos-detail-inner{
+  padding-top:18px;border-top:1px solid var(--cream-18);
+  font-size:.94rem;color:var(--cream-70);line-height:1.7;
+}
+.pos-detail-inner ul{list-style:none;padding:0;margin-top:10px}
+.pos-detail-inner li{
+  padding:6px 0 6px 18px;position:relative;color:var(--cream);font-size:.92rem;
+}
+.pos-detail-inner li::before{
+  content:"";position:absolute;left:0;top:14px;
+  width:6px;height:6px;border-radius:50%;background:var(--cream-40);
+}
+.pos-toggle{
+  margin-top:16px;font-size:.78rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream-40);display:flex;align-items:center;gap:6px;
+}
+.pos-toggle::after{content:"+";font-size:1rem;transition:transform .3s}
+.pos.open .pos-toggle::after{content:"−"}
+@media(max-width:900px){.spread-grid{grid-template-columns:1fr}}
+
+/* WHEN BOX */
+.when-box{
+  margin-top:34px;padding:34px 36px;
+  background:var(--cream-06);border:1px solid var(--cream-18);
+  border-radius:20px;
+}
+.when-label{
+  font-style:italic;font-size:1.15rem;color:var(--cream);
+  margin-bottom:18px;display:block;
+}
+.signal-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.signal-list .sig{
+  padding:14px 16px;border-left:3px solid var(--purple);
+  background:var(--purple-dim);border-radius:0 12px 12px 0;
+  font-style:italic;font-family:'Lora',serif;color:var(--cream);font-size:.98rem;
+}
+.signal-list .sig.coral{border-color:var(--coral);background:rgba(232,96,76,.08)}
+.signal-list .sig.gold{border-color:var(--gold);background:rgba(255,213,79,.08)}
+.signal-list .sig.cyan{border-color:var(--cyan);background:rgba(79,195,247,.08)}
+.signal-list .sig.green{border-color:var(--green);background:rgba(111,255,176,.08)}
+.signal-list .sig.magenta{border-color:var(--magenta);background:rgba(224,64,251,.08)}
+@media(max-width:700px){.signal-list{grid-template-columns:1fr}}
+
+/* EXAMPLES */
+.ex-block{margin-top:48px;padding-top:30px;border-top:1px solid var(--cream-18)}
+.ex-block:first-of-type{border-top:none;padding-top:0}
+.ex-q{
+  font-style:italic;font-size:1.3rem;color:var(--cream);
+  margin-bottom:24px;display:block;line-height:1.4;
+}
+.ex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ex-card{
+  border-radius:18px;overflow:hidden;cursor:pointer;
+  border:1px solid var(--cream-18);background:var(--cream-06);
+  transition:all .4s ease;
+}
+.ex-card:hover{border-color:var(--cream-40);transform:translateY(-3px)}
+.ex-art{
+  aspect-ratio:3/3.8;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;padding:24px 16px;text-align:center;
+  background:linear-gradient(160deg,rgba(123,111,232,.18),rgba(232,96,76,.10));
+}
+.ex-card.gold .ex-art{background:linear-gradient(160deg,rgba(255,213,79,.20),rgba(232,96,76,.12))}
+.ex-card.purple .ex-art{background:linear-gradient(160deg,rgba(123,111,232,.22),rgba(79,195,247,.10))}
+.ex-card.coral .ex-art{background:linear-gradient(160deg,rgba(232,96,76,.22),rgba(255,213,79,.10))}
+.ex-card.cyan .ex-art{background:linear-gradient(160deg,rgba(79,195,247,.22),rgba(123,111,232,.10))}
+.ex-card.magenta .ex-art{background:linear-gradient(160deg,rgba(224,64,251,.22),rgba(123,111,232,.10))}
+.ex-card.green .ex-art{background:linear-gradient(160deg,rgba(111,255,176,.20),rgba(79,195,247,.10))}
+.ex-emoji{font-size:3.4rem;line-height:1;margin-bottom:14px}
+.ex-card-name{
+  font-family:'Lora',serif;font-weight:600;font-size:1.1rem;
+  color:var(--cream);margin-bottom:10px;line-height:1.25;
+}
+.pos-badge{
+  display:inline-block;padding:4px 10px;border-radius:999px;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--cream-18);background:rgba(12,17,24,.50);color:var(--cream-70);
+}
+.ex-hint{
+  text-align:center;padding:10px 14px;font-size:.78rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--cream-40);
+  border-top:1px solid var(--cream-18);background:var(--cream-06);
+}
+.ex-info{
+  max-height:0;overflow:hidden;transition:max-height .5s ease,padding .4s ease;
+  background:var(--cream-06);border-top:1px solid var(--cream-18);padding:0 22px;
+}
+.ex-card.open .ex-info{max-height:480px;padding:20px 22px}
+.ex-info .meaning{
+  font-family:'Lora',serif;font-weight:600;color:var(--cream);
+  display:block;margin-bottom:8px;font-size:1rem;
+}
+.ex-info p{color:var(--cream-70);font-size:.92rem;line-height:1.65}
+@media(max-width:900px){.ex-grid{grid-template-columns:1fr}}
+
+/* SYNTH */
+.synth-btn{
+  margin-top:22px;padding:14px 24px;
+  background:transparent;border:1px solid var(--cream-18);color:var(--cream);
+  font-family:'Questrial',sans-serif;font-size:.86rem;
+  letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  border-radius:999px;display:inline-flex;align-items:center;gap:10px;
+  transition:all .3s ease;
+}
+.synth-btn:hover{border-color:var(--purple);color:var(--cream);background:var(--purple-dim)}
+.synth-btn .arr{display:inline-block;transition:transform .3s ease}
+.synth-btn.shown .arr{transform:rotate(90deg)}
+.synth-box{
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;
+  background:linear-gradient(135deg,var(--purple-dim),rgba(232,96,76,.06));
+  border:1px solid var(--purple-light);border-radius:18px;
+}
+.synth-box.vis{max-height:600px;opacity:1;margin-top:20px;padding:28px 32px}
+.synth-text{
+  font-family:'Lora',serif;font-style:italic;font-size:1.05rem;
+  line-height:1.7;color:var(--cream);
+}
+
+/* PRACTICE BLOCK */
+.practice-intro{
+  margin-top:24px;padding:30px 32px;background:var(--cream-06);
+  border:1px solid var(--cream-18);border-radius:18px;
+  font-size:1.02rem;color:var(--cream);line-height:1.75;max-width:760px;
+}
+.practice-intro .em{font-style:italic;font-family:'Lora',serif;color:var(--cream)}
+.exercise{
+  margin-top:42px;padding:34px 36px;
+  background:var(--cream-06);
+  border:1px solid var(--cream-18);
+  border-radius:22px;
+  position:relative;
+}
+.exercise-head{display:flex;align-items:center;gap:14px;margin-bottom:8px;flex-wrap:wrap}
+.exercise-num{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Lora',serif;font-weight:700;font-size:1rem;
+  color:var(--navy);background:var(--cream);
+}
+.exercise-tag{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:4px 10px;border-radius:999px;color:var(--cream-70);
+  border:1px solid var(--cream-18);
+}
+.exercise h3{margin-bottom:14px;font-family:'Lora',serif;font-size:1.4rem}
+.exercise .ex-prompt{color:var(--cream-70);font-size:.98rem;line-height:1.7;margin-bottom:22px}
+
+/* QUIZ */
+.q-block{margin-top:28px}
+.q-block + .q-block{margin-top:36px;padding-top:30px;border-top:1px solid var(--cream-18)}
+.q-question{
+  font-family:'Lora',serif;font-size:1.1rem;color:var(--cream);
+  margin-bottom:18px;line-height:1.5;font-weight:600;
+}
+.q-question .qn{color:var(--cream-40);font-style:italic;font-weight:400;margin-right:6px}
+.q-options{display:flex;flex-direction:column;gap:10px}
+.q-opt{
+  padding:14px 18px;border:1px solid var(--cream-18);
+  background:transparent;color:var(--cream);text-align:left;
+  border-radius:14px;cursor:pointer;font-family:'Questrial',sans-serif;
+  font-size:.96rem;line-height:1.5;
+  transition:all .25s ease;display:flex;align-items:center;gap:12px;
+}
+.q-opt:hover:not(:disabled){border-color:var(--cream-40);background:var(--cream-06)}
+.q-opt .marker{
+  width:22px;height:22px;border-radius:50%;
+  border:1px solid var(--cream-40);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:.7rem;
+}
+.q-opt.correct{border-color:var(--green);background:rgba(111,255,176,.10);color:var(--cream)}
+.q-opt.correct .marker{background:var(--green);border-color:var(--green);color:var(--navy)}
+.q-opt.wrong{border-color:var(--coral);background:rgba(232,96,76,.10)}
+.q-opt.wrong .marker{background:var(--coral);border-color:var(--coral);color:var(--navy)}
+.q-opt:disabled{cursor:default}
+.q-feedback{
+  margin-top:14px;padding:14px 18px;border-radius:12px;
+  font-size:.92rem;line-height:1.65;
+  background:var(--cream-06);color:var(--cream-70);display:none;
+  border-left:3px solid var(--purple);
+}
+.q-feedback.show{display:block}
+.q-feedback.correct{border-left-color:var(--green)}
+.q-feedback.wrong{border-left-color:var(--coral)}
+.q-feedback strong{color:var(--cream);font-family:'Lora',serif;font-style:italic}
+
+/* MATCH */
+.match-wrap{display:grid;grid-template-columns:1fr 2fr;gap:24px;margin-top:14px}
+.match-pool{
+  padding:20px;border:1px dashed var(--cream-18);border-radius:16px;
+  display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;
+  min-height:180px;
+}
+.match-buckets{display:grid;grid-template-rows:repeat(3,1fr);gap:14px}
+.bucket{
+  padding:18px 20px;border-radius:16px;
+  border:1px solid var(--cream-18);background:var(--cream-06);
+  min-height:110px;
+}
+.bucket.sun{border-color:rgba(232,96,76,.32);background:rgba(232,96,76,.06)}
+.bucket.moon{border-color:rgba(79,195,247,.32);background:rgba(79,195,247,.06)}
+.bucket.asc{border-color:rgba(224,64,251,.30);background:rgba(224,64,251,.06)}
+.bucket-head{
+  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+}
+.bucket-glyph{font-size:1.4rem;line-height:1}
+.bucket-name{
+  font-family:'Lora',serif;font-weight:600;color:var(--cream);font-size:1rem;
+}
+.bucket-name small{
+  display:block;font-family:'Questrial',sans-serif;font-weight:400;
+  font-size:.78rem;color:var(--cream-40);letter-spacing:.04em;margin-top:2px;
+}
+.bucket-content{display:flex;flex-wrap:wrap;gap:6px;min-height:36px}
+.chip{
+  padding:8px 14px;border-radius:999px;
+  background:var(--cream-10);border:1px solid var(--cream-18);
+  color:var(--cream);font-size:.86rem;cursor:pointer;
+  transition:all .25s ease;font-family:'Questrial',sans-serif;
+  user-select:none;
+}
+.chip:hover{background:var(--cream-18);transform:translateY(-1px)}
+.chip.placed.correct{background:rgba(111,255,176,.16);border-color:var(--green);color:var(--cream);cursor:default}
+.chip.placed.wrong{background:rgba(232,96,76,.18);border-color:var(--coral);color:var(--cream);cursor:default}
+.match-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.btn-ghost{
+  padding:11px 22px;border-radius:999px;
+  background:transparent;border:1px solid var(--cream-18);color:var(--cream);
+  font-family:'Questrial',sans-serif;font-size:.84rem;
+  letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  transition:all .25s ease;
+}
+.btn-ghost:hover{border-color:var(--cream);background:var(--cream-06)}
+.btn-primary{
+  padding:11px 24px;border-radius:999px;
+  background:var(--purple);border:1px solid var(--purple);color:var(--cream);
+  font-family:'Questrial',sans-serif;font-size:.84rem;
+  letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  transition:all .25s ease;
+}
+.btn-primary:hover{background:transparent;color:var(--cream)}
+.match-result{
+  margin-top:18px;padding:16px 20px;border-radius:14px;
+  background:var(--cream-06);font-size:.95rem;color:var(--cream);
+  display:none;border-left:3px solid var(--purple);
+}
+.match-result.show{display:block}
+@media(max-width:900px){.match-wrap{grid-template-columns:1fr}}
+
+/* SELF-REFLECTION */
+.reflect-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px;
+}
+.reflect-card{
+  padding:24px;border-radius:18px;
+  border:1px solid var(--cream-18);background:var(--cream-06);
+}
+.reflect-card.sun{border-color:rgba(232,96,76,.30)}
+.reflect-card.moon{border-color:rgba(79,195,247,.30)}
+.reflect-card.asc{border-color:rgba(224,64,251,.30)}
+.reflect-card .glyph-mini{font-size:1.6rem;display:block;margin-bottom:6px}
+.reflect-card h4{
+  font-family:'Lora',serif;font-size:1.05rem;color:var(--cream);
+  margin-bottom:4px;font-weight:600;
+}
+.reflect-card .reflect-q{
+  color:var(--cream-70);font-size:.88rem;line-height:1.55;
+  font-style:italic;font-family:'Lora',serif;margin-bottom:14px;
+}
+.reflect-card textarea{
+  width:100%;min-height:90px;padding:14px;
+  background:var(--navy);color:var(--cream);
+  border:1px solid var(--cream-18);border-radius:12px;
+  font-family:'Questrial',sans-serif;font-size:.92rem;line-height:1.55;
+  resize:vertical;outline:none;transition:border-color .25s;
+}
+.reflect-card textarea:focus{border-color:var(--purple)}
+.reflect-actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.reflect-summary{
+  margin-top:18px;padding:22px 24px;border-radius:16px;
+  background:linear-gradient(135deg,var(--purple-dim),rgba(232,96,76,.06));
+  border:1px solid var(--purple-light);display:none;
+}
+.reflect-summary.show{display:block}
+.reflect-summary h4{
+  font-family:'Lora',serif;font-style:italic;font-size:1.1rem;
+  color:var(--cream);margin-bottom:14px;
+}
+.reflect-summary .ref-line{
+  padding:10px 0;border-top:1px solid var(--cream-18);
+  font-size:.92rem;color:var(--cream);line-height:1.6;
+}
+.reflect-summary .ref-line:first-of-type{border-top:none}
+.reflect-summary .ref-line strong{
+  font-family:'Lora',serif;font-weight:600;font-style:italic;
+  margin-right:8px;
+}
+.reflect-summary .ref-line.sun strong{color:var(--coral)}
+.reflect-summary .ref-line.moon strong{color:var(--cyan)}
+.reflect-summary .ref-line.asc strong{color:var(--magenta)}
+@media(max-width:900px){.reflect-grid{grid-template-columns:1fr}}
+
+/* SCENARIO */
+.scenario-card{
+  margin-top:14px;padding:30px 32px;border-radius:18px;
+  background:linear-gradient(135deg,var(--cream-06),var(--cream-10));
+  border:1px solid var(--cream-18);
+}
+.scenario-meta{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;
+}
+.meta-pill{
+  padding:6px 12px;border-radius:999px;font-size:.78rem;
+  letter-spacing:.08em;border:1px solid var(--cream-18);
+  background:var(--cream-06);color:var(--cream);
+}
+.meta-pill.sun{border-color:rgba(232,96,76,.36);color:var(--coral)}
+.meta-pill.moon{border-color:rgba(79,195,247,.36);color:var(--cyan)}
+.meta-pill.asc{border-color:rgba(224,64,251,.36);color:var(--magenta)}
+.scenario-q{
+  font-family:'Lora',serif;font-size:1.08rem;color:var(--cream);
+  font-style:italic;line-height:1.65;margin-bottom:6px;
+}
+.scenario-options{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.scenario-reveal{
+  margin-top:22px;padding:24px 26px;border-radius:14px;
+  background:rgba(123,111,232,.10);border:1px solid var(--purple-light);
+  display:none;
+}
+.scenario-reveal.show{display:block}
+.scenario-reveal h4{
+  font-family:'Lora',serif;font-style:italic;font-size:1rem;
+  color:var(--cream);margin-bottom:10px;
+}
+.scenario-reveal p{color:var(--cream);font-size:.96rem;line-height:1.7}
+.scenario-reveal p + p{margin-top:10px;color:var(--cream-70)}
+
+/* CHECKLIST */
+.checklist{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.check-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 18px;border:1px solid var(--cream-18);border-radius:14px;
+  background:var(--cream-06);cursor:pointer;
+  transition:all .25s ease;
+}
+.check-item:hover{background:var(--cream-10)}
+.check-item input{display:none}
+.check-item .cb{
+  width:22px;height:22px;border-radius:6px;flex-shrink:0;
+  border:1.5px solid var(--cream-40);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s ease;margin-top:2px;
+}
+.check-item .cb::after{
+  content:"";width:10px;height:6px;border-left:2px solid var(--cream);
+  border-bottom:2px solid var(--cream);transform:rotate(-45deg) scale(0);
+  transition:transform .2s ease;margin-top:-2px;
+}
+.check-item input:checked + .cb{background:var(--green);border-color:var(--green)}
+.check-item input:checked + .cb::after{border-color:var(--navy);transform:rotate(-45deg) scale(1)}
+.check-item span{font-size:.94rem;line-height:1.5;color:var(--cream)}
+.check-item input:checked ~ span{color:var(--cream-70);text-decoration:line-through;text-decoration-color:var(--cream-40)}
+@media(max-width:700px){.checklist{grid-template-columns:1fr}}
+
+/* PROGRESS */
+.progress-bar{
+  position:fixed;top:0;left:0;height:3px;
+  background:var(--purple);z-index:60;width:0;
+  transition:width .15s linear;
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--cream-18);
+  padding:48px 28px;text-align:center;
+  color:var(--cream-40);font-size:.88rem;letter-spacing:.04em;
+  margin-top:60px;
+}
+footer .ft-mark{
+  font-family:'Lora',serif;font-style:italic;color:var(--cream-70);
+  font-size:.95rem;display:block;margin-bottom:6px;
+}
+
+/* SECTION SUB */
+.sec-sub{
+  color:var(--cream-70);font-size:1.02rem;line-height:1.7;
+  margin-top:20px;max-width:720px;
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- SIDE NAV -->
+<nav class="side-nav" aria-label="Section navigation">
+  <button class="dot on" data-target="hero" onclick="goToSection('hero')" aria-label="Hero"></button>
+  <button class="dot" data-target="overview" onclick="goToSection('overview')" aria-label="Overview"></button>
+  <button class="dot" data-target="foundation" onclick="goToSection('foundation')" aria-label="Foundation"></button>
+  <button class="dot" data-target="sun" onclick="goToSection('sun')" aria-label="Sun"></button>
+  <button class="dot" data-target="moon" onclick="goToSection('moon')" aria-label="Moon"></button>
+  <button class="dot" data-target="ascendant" onclick="goToSection('ascendant')" aria-label="Ascendant"></button>
+  <button class="dot" data-target="practice" onclick="goToSection('practice')" aria-label="Practice"></button>
+</nav>
+
+<!-- S1 HERO -->
+<section id="hero" class="hero">
+  <div class="blob blob-purple-r"></div>
+  <div class="blob blob-coral-r"></div>
+  <div class="hero-inner">
+    <div class="fade">
+      <span class="hero-tag"><span class="star">✦</span> Module · The Big 3</span>
+      <h1>Sun, Moon,<br>Ascendant</h1>
+      <p class="hero-lead">Three points form the foundation of every natal chart. Together, they describe identity, emotional life, and the way a person enters the world. Learn to read each — and combine them into a complete portrait.</p>
+    </div>
+    <div class="hero-deco fade">
+      <svg viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" fill="none" class="hero-svg">
+        <defs>
+          <radialGradient id="centerPulse" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFD54F" stop-opacity=".8"/>
+            <stop offset="100%" stop-color="#FFD54F" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- ORBITING RINGS — rotate dash patterns for motion illusion -->
+        <circle cx="190" cy="190" r="170" stroke="#f0ebe0" stroke-opacity=".22" stroke-width="1" stroke-dasharray="3 9">
+          <animate attributeName="stroke-dashoffset" from="0" to="-120" dur="40s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="190" cy="190" r="130" stroke="#f0ebe0" stroke-opacity=".14" stroke-width="1"/>
+        <circle cx="190" cy="190" r="90" stroke="#f0ebe0" stroke-opacity=".12" stroke-width="1" stroke-dasharray="2 6">
+          <animate attributeName="stroke-dashoffset" from="0" to="80" dur="30s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- cross lines -->
+        <line x1="190" y1="20" x2="190" y2="360" stroke="#f0ebe0" stroke-opacity=".10" stroke-width="1"/>
+        <line x1="20" y1="190" x2="360" y2="190" stroke="#f0ebe0" stroke-opacity=".10" stroke-width="1"/>
+
+        <!-- ORBITING DOT on outer ring -->
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="0 190 190" to="360 190 190" dur="22s" repeatCount="indefinite"/>
+          <circle cx="360" cy="190" r="2.5" fill="#FFD54F" opacity=".9"/>
+          <circle cx="360" cy="190" r="5" fill="#FFD54F" opacity=".25"/>
+        </g>
+        <!-- ORBITING DOT on middle ring (counter direction) -->
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="360 190 190" to="0 190 190" dur="34s" repeatCount="indefinite"/>
+          <circle cx="190" cy="60" r="1.8" fill="#7B6FE8" opacity=".85"/>
+          <circle cx="190" cy="60" r="4" fill="#7B6FE8" opacity=".22"/>
+        </g>
+
+        <!-- SUN — gentle float + pulsing rays -->
+        <g class="planet-sun">
+          <g transform="translate(190,60)">
+            <animateTransform attributeName="transform" type="translate" values="190,60;190,55;190,60;190,65;190,60" dur="6s" repeatCount="indefinite" additive="replace"/>
+            <circle r="26" fill="#E8604C" fill-opacity=".18">
+              <animate attributeName="r" values="22;28;22" dur="3.2s" repeatCount="indefinite"/>
+              <animate attributeName="fill-opacity" values=".28;.12;.28" dur="3.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle r="22" fill="#E8604C" fill-opacity=".22" stroke="#E8604C" stroke-width="1.2"/>
+            <circle r="6" fill="#E8604C">
+              <animate attributeName="r" values="6;7;6" dur="2.4s" repeatCount="indefinite"/>
+            </circle>
+            <g stroke="#E8604C" stroke-width="1.2" stroke-linecap="round">
+              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="60s" repeatCount="indefinite"/>
+              <line x1="0" y1="-32" x2="0" y2="-38"/>
+              <line x1="0" y1="32" x2="0" y2="38"/>
+              <line x1="-32" y1="0" x2="-38" y2="0"/>
+              <line x1="32" y1="0" x2="38" y2="0"/>
+              <line x1="-22" y1="-22" x2="-27" y2="-27"/>
+              <line x1="22" y1="22" x2="27" y2="27"/>
+              <line x1="22" y1="-22" x2="27" y2="-27"/>
+              <line x1="-22" y1="22" x2="-27" y2="27"/>
+            </g>
+          </g>
+        </g>
+
+        <!-- MOON — gentle float opposite phase -->
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="70,260;70,265;70,260;70,255;70,260" dur="7s" repeatCount="indefinite"/>
+          <circle r="26" fill="#4FC3F7" fill-opacity=".10">
+            <animate attributeName="r" values="22;28;22" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="fill-opacity" values=".18;.06;.18" dur="4s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="22" fill="#4FC3F7" fill-opacity=".18" stroke="#4FC3F7" stroke-width="1.2"/>
+          <path d="M 6 -10 a 12 12 0 1 0 0 20 a 9 9 0 1 1 0 -20 z" fill="#4FC3F7"/>
+        </g>
+
+        <!-- ASCENDANT — gentle float -->
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="310,260;310,255;310,260;310,265;310,260" dur="6.5s" repeatCount="indefinite"/>
+          <circle r="26" fill="#E040FB" fill-opacity=".10">
+            <animate attributeName="r" values="22;28;22" dur="3.6s" repeatCount="indefinite"/>
+            <animate attributeName="fill-opacity" values=".18;.06;.18" dur="3.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="22" fill="#E040FB" fill-opacity=".18" stroke="#E040FB" stroke-width="1.2"/>
+          <path d="M -10 6 L 0 -8 L 10 6 M -6 6 L 6 6" stroke="#E040FB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        </g>
+
+        <!-- TWINKLING corner sparkles -->
+        <g fill="#FFD54F">
+          <circle cx="40" cy="40" r="1.6">
+            <animate attributeName="opacity" values=".2;1;.2" dur="2.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="345" cy="55" r="1.2">
+            <animate attributeName="opacity" values=".9;.2;.9" dur="3.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="55" cy="335" r="1.4">
+            <animate attributeName="opacity" values=".3;1;.3" dur="3.1s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="335" cy="335" r="1.6">
+            <animate attributeName="opacity" values="1;.3;1" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="100" cy="120" r="1" opacity=".7">
+            <animate attributeName="opacity" values=".1;.9;.1" dur="3.7s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="280" cy="140" r=".9" opacity=".6">
+            <animate attributeName="opacity" values=".8;.1;.8" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="140" cy="290" r="1" opacity=".7">
+            <animate attributeName="opacity" values=".2;.9;.2" dur="2.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="250" cy="300" r=".8" opacity=".5">
+            <animate attributeName="opacity" values=".7;.1;.7" dur="3.3s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- CENTER pulsing core -->
+        <g>
+          <circle cx="190" cy="190" r="22" fill="url(#centerPulse)">
+            <animate attributeName="r" values="14;26;14" dur="3.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;.2;.7" dur="3.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="190" cy="190" r="2.6" fill="#FFD54F">
+            <animate attributeName="r" values="2.2;3.4;2.2" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- corner brackets -->
+        <g stroke="#f0ebe0" stroke-opacity=".30" stroke-width="1" fill="none">
+          <path d="M10 30 L10 10 L30 10"/>
+          <path d="M370 30 L370 10 L350 10"/>
+          <path d="M10 350 L10 370 L30 370"/>
+          <path d="M370 350 L370 370 L350 370"/>
+        </g>
+
+        <!-- center label, gently breathing -->
+        <text x="190" y="232" text-anchor="middle" fill="#f0ebe0" font-family="Lora, serif" font-style="italic" font-size="11" opacity=".55" letter-spacing="2">
+          the big three
+          <animate attributeName="opacity" values=".35;.7;.35" dur="4.5s" repeatCount="indefinite"/>
+        </text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- S2 OVERVIEW -->
+<section id="overview">
+  <div class="fade">
+    <span class="eyebrow">What awaits for you here</span>
+    <h2>Where we're heading</h2>
+    <p class="sec-sub">No prior astrology experience needed. We start with the basics — what the Big 3 are and how they fit together. Then a focused look at each of the three points. We finish with hands-on practice that turns theory into intuition.</p>
+  </div>
+  <div class="overview-grid fade">
+    <a class="ov-item magenta" href="#foundation" onclick="event.preventDefault();goToSection('foundation')">
+      <span class="ov-icon">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+          <circle cx="30" cy="20" r="6" fill="#E040FB" fill-opacity=".25" stroke="#E040FB" stroke-width="1.2"/>
+          <circle cx="18" cy="40" r="6" fill="#E040FB" fill-opacity=".15" stroke="#E040FB" stroke-width="1.2"/>
+          <circle cx="42" cy="40" r="6" fill="#E040FB" fill-opacity=".10" stroke="#E040FB" stroke-width="1.2"/>
+          <path d="M30 26 L18 34 M30 26 L42 34 M24 40 L36 40" stroke="#E040FB" stroke-width="1" stroke-opacity=".5" stroke-dasharray="2 3"/>
+        </svg>
+      </span>
+      <span class="ov-num">01 / Foundation</span>
+      <span class="ov-label">What the Big 3 are</span>
+      <span class="ov-sub">Luminaries, the Ascendant, and the three layers of analysis: sign, house, aspects.</span>
+      <span class="ov-arrow">→</span>
+    </a>
+    <a class="ov-item coral" href="#sun" onclick="event.preventDefault();goToSection('sun')">
+      <span class="ov-icon">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+          <circle cx="30" cy="30" r="9" fill="#E8604C" fill-opacity=".30" stroke="#E8604C" stroke-width="1.4"/>
+          <circle cx="30" cy="30" r="3" fill="#E8604C"/>
+          <g stroke="#E8604C" stroke-width="1.4" stroke-linecap="round">
+            <line x1="30" y1="14" x2="30" y2="8"/>
+            <line x1="30" y1="52" x2="30" y2="46"/>
+            <line x1="14" y1="30" x2="8" y2="30"/>
+            <line x1="52" y1="30" x2="46" y2="30"/>
+            <line x1="18" y1="18" x2="14" y2="14"/>
+            <line x1="42" y1="42" x2="46" y2="46"/>
+            <line x1="42" y1="18" x2="46" y2="14"/>
+            <line x1="18" y1="42" x2="14" y2="46"/>
+          </g>
+        </svg>
+      </span>
+      <span class="ov-num">02 / Sun</span>
+      <span class="ov-label">Identity &amp; direction</span>
+      <span class="ov-sub">Who you are at the core — willpower, self-worth, creative expression.</span>
+      <span class="ov-arrow">→</span>
+    </a>
+    <a class="ov-item purple" href="#moon" onclick="event.preventDefault();goToSection('moon')">
+      <span class="ov-icon">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+          <circle cx="30" cy="30" r="14" fill="#7B6FE8" fill-opacity=".18" stroke="#7B6FE8" stroke-width="1.4"/>
+          <path d="M 32 18 a 12 12 0 1 0 0 24 a 9 12 0 1 1 0 -24 z" fill="#7B6FE8"/>
+          <circle cx="46" cy="16" r="1.2" fill="#7B6FE8"/>
+          <circle cx="14" cy="44" r="1" fill="#7B6FE8"/>
+          <circle cx="48" cy="42" r="1.4" fill="#7B6FE8"/>
+        </svg>
+      </span>
+      <span class="ov-num">03 / Moon</span>
+      <span class="ov-label">Emotion &amp; inner world</span>
+      <span class="ov-sub">How you feel, what makes you feel safe, the rhythm of your subconscious.</span>
+      <span class="ov-arrow">→</span>
+    </a>
+    <a class="ov-item gold" href="#ascendant" onclick="event.preventDefault();goToSection('ascendant')">
+      <span class="ov-icon">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+          <line x1="6" y1="42" x2="54" y2="42" stroke="#FFD54F" stroke-width="1.4"/>
+          <path d="M16 42 a14 14 0 0 1 28 0" fill="#FFD54F" fill-opacity=".22" stroke="#FFD54F" stroke-width="1.4"/>
+          <g stroke="#FFD54F" stroke-width="1.2" stroke-linecap="round">
+            <line x1="30" y1="22" x2="30" y2="16"/>
+            <line x1="18" y1="30" x2="13" y2="27"/>
+            <line x1="42" y1="30" x2="47" y2="27"/>
+          </g>
+          <circle cx="30" cy="42" r="2" fill="#FFD54F"/>
+        </svg>
+      </span>
+      <span class="ov-num">04 / Ascendant</span>
+      <span class="ov-label">First impression</span>
+      <span class="ov-sub">How others see you — body language, social mask, opening move in any room.</span>
+      <span class="ov-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- S3 DIVIDER FOUNDATION -->
+<section class="div-block" id="foundation">
+  <div class="blob blob-coral-r"></div>
+  <div class="fade">
+    <span class="eyebrow-big">— start here</span>
+    <h2>What the<br>Big 3 are</h2>
+  </div>
+</section>
+
+<!-- S3a FOUNDATION CONTENT -->
+<section>
+  <div class="fade">
+    <span class="eyebrow">Section 01 · The foundation</span>
+    <h3 style="margin-bottom:14px">Three points. One personality.</h3>
+    <p class="sec-sub">Today we focus on the Big 3: the Sun, Moon, and Ascendant. This is the foundation of the natal chart and the first level of analysis. These three elements describe identity, emotional responses, and the way a person presents themselves to the world.</p>
+  </div>
+
+  <div class="compare-grid fade">
+    <div class="cmp-card cyan">
+      <span class="cmp-tag">Luminaries</span>
+      <h3>Sun &amp; Moon</h3>
+      <p>The two main sources of light in the chart. They define the core of personality and inner life. Always analyzed first — without them, deeper analysis loses context.</p>
+    </div>
+    <div class="cmp-card green">
+      <span class="cmp-tag">The cusp</span>
+      <h3>Ascendant</h3>
+      <p>Not a planet, but the cusp of the 1st house. It marks the beginning of the chart and shapes how a person enters and reacts to the outer world.</p>
+    </div>
+  </div>
+
+  <div class="concept-box fade" style="margin-top:30px">
+    <span class="lead-em">Sign · House · Aspects — the three lenses.</span>
+    The <strong>sign</strong> shows <em>how</em> the energy is expressed. The <strong>house</strong> shows <em>where</em> it manifests in life. The <strong>aspects</strong> show <em>how it interacts</em> with other planets.
+    <span class="accent-line">A single layer hints at the energy. All three layers together give a precise reading.</span>
+  </div>
+
+  <div class="when-box fade" style="margin-top:30px">
+    <span class="when-label">A worked example — Sun in three layers</span>
+    <p style="color:var(--cream-70)">Take one Sun position and see what each layer adds:</p>
+    <div class="signal-list">
+      <div class="sig coral">Sun in <strong>Capricorn</strong> — a goal-oriented, disciplined identity.</div>
+      <div class="sig gold">Sun in the <strong>10th house</strong> — that identity is built through career and public image.</div>
+      <div class="sig magenta">Sun <strong>square Saturn</strong> — pressure on the self, high inner demands.</div>
+      <div class="sig green">Together → ambition channelled through career, with a strong inner critic to manage.</div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 DIVIDER SUN -->
+<section class="div-block" id="sun">
+  <div class="blob blob-coral-r"></div>
+  <div class="blob blob-gold-l"></div>
+  <div class="div-inner fade">
+    <div>
+      <span class="eyebrow-big">— first luminary</span>
+      <h2>Sun<br>who you are</h2>
+    </div>
+    <div class="div-art">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+        <defs>
+          <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFD54F" stop-opacity=".6"/>
+            <stop offset="60%" stop-color="#E8604C" stop-opacity=".25"/>
+            <stop offset="100%" stop-color="#E8604C" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="110" cy="110" r="100" fill="url(#sunGlow)"/>
+        <circle cx="110" cy="110" r="45" fill="#E8604C" fill-opacity=".22" stroke="#E8604C" stroke-width="1.6"/>
+        <circle cx="110" cy="110" r="14" fill="#E8604C"/>
+        <g stroke="#E8604C" stroke-width="1.6" stroke-linecap="round">
+          <line x1="110" y1="56" x2="110" y2="40"/>
+          <line x1="110" y1="180" x2="110" y2="164"/>
+          <line x1="56" y1="110" x2="40" y2="110"/>
+          <line x1="180" y1="110" x2="164" y2="110"/>
+          <line x1="72" y1="72" x2="60" y2="60"/>
+          <line x1="148" y1="148" x2="160" y2="160"/>
+          <line x1="148" y1="72" x2="160" y2="60"/>
+          <line x1="72" y1="148" x2="60" y2="160"/>
+        </g>
+        <g stroke="#FFD54F" stroke-width="1" stroke-linecap="round" stroke-opacity=".6">
+          <line x1="110" y1="30" x2="110" y2="22"/>
+          <line x1="110" y1="198" x2="110" y2="190"/>
+          <line x1="30" y1="110" x2="22" y2="110"/>
+          <line x1="198" y1="110" x2="190" y2="110"/>
+        </g>
+        <circle cx="36" cy="36" r="1.4" fill="#FFD54F"/>
+        <circle cx="184" cy="36" r="1.2" fill="#FFD54F"/>
+        <circle cx="36" cy="184" r="1.6" fill="#FFD54F"/>
+        <circle cx="184" cy="184" r="1.2" fill="#FFD54F"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- S4a SUN CONTENT -->
+<section>
+  <div class="fade">
+    <span class="eyebrow">Section 02 · Sun</span>
+    <h3 style="margin-bottom:14px">Identity, direction, and the will to act</h3>
+    <p class="sec-sub">The Sun represents the core identity and sense of self. It shows how a person defines themselves and builds their life direction. It is the centre of willpower, decision-making, and personal responsibility — and the source of self-expression and creativity.</p>
+  </div>
+
+  <div class="spread-grid fade" style="grid-template-columns:repeat(3,1fr)">
+    <div class="pos coral-b open" id="pos-sun-id" onclick="togglePos('sun-id')" role="button" aria-expanded="true">
+      <span class="glyph">☀️</span>
+      <span class="badge">Identity</span>
+      <h3>Who I am</h3>
+      <p class="pos-q">Sense of self · self-worth · confidence</p>
+      <div class="pos-detail"><div class="pos-detail-inner">
+        A stable Sun gives an internal sense of value without constant need for approval. It tells you who you are when no one is watching.
+        <ul>
+          <li>Identity and sense of self</li>
+          <li>Confidence and self-worth</li>
+          <li>Personal responsibility</li>
+        </ul>
+      </div></div>
+      <span class="pos-toggle">tap to toggle</span>
+    </div>
+    <div class="pos gold-b" id="pos-sun-dir" onclick="togglePos('sun-dir')" role="button" aria-expanded="false">
+      <span class="glyph">🧭</span>
+      <span class="badge">Direction</span>
+      <h3>Where I'm going</h3>
+      <p class="pos-q">Willpower · life direction · choices</p>
+      <div class="pos-detail"><div class="pos-detail-inner">
+        The Sun governs the will to act. It points to the long arc of a life — the direction a person keeps returning to, even after detours.
+        <ul>
+          <li>Willpower and life direction</li>
+          <li>Decision-making</li>
+          <li>Need for purpose</li>
+        </ul>
+      </div></div>
+      <span class="pos-toggle">tap to toggle</span>
+    </div>
+    <div class="pos purple-b" id="pos-sun-exp" onclick="togglePos('sun-exp')" role="button" aria-expanded="false">
+      <span class="glyph">✨</span>
+      <span class="badge">Expression</span>
+      <h3>How I shine</h3>
+      <p class="pos-q">Creativity · uniqueness · recognition</p>
+      <div class="pos-detail"><div class="pos-detail-inner">
+        Self-expression and creativity — how a person shows their individuality. The Sun also reflects the healthy need to be seen and recognised.
+        <ul>
+          <li>Self-expression and creativity</li>
+          <li>Individuality and uniqueness</li>
+          <li>Recognition and visibility</li>
+        </ul>
+      </div></div>
+      <span class="pos-toggle">tap to toggle</span>
+    </div>
+  </div>
+
+  <div class="when-box fade">
+    <span class="when-label">The Sun answers — who am I, and where am I going?</span>
+    <div class="signal-list">
+      <div class="sig coral">Sun in <strong>Leo</strong> — identity through charisma and presence.</div>
+      <div class="sig gold">Sun in <strong>Gemini</strong> — identity through curiosity and communication.</div>
+      <div class="sig magenta">Sun in <strong>Capricorn</strong> — identity through achievement and discipline.</div>
+      <div class="sig cyan">Sun in <strong>10th house</strong> — identity built through career and public image.</div>
+    </div>
+  </div>
+
+  <!-- SUN EXAMPLES -->
+  <div class="ex-block fade" style="margin-top:48px">
+    <span class="ex-q">"Why does my Sun feel so different from my friend's, even though we're both <em>doing well</em>?"</span>
+    <div class="ex-grid">
+      <div class="ex-card coral" onclick="toggleCard(this)" role="button" aria-expanded="false">
+        <div class="ex-art">
+          <div class="ex-emoji">🦁</div>
+          <div class="ex-card-name">Sun in Leo</div>
+          <span class="pos-badge">Sign · Fixed Fire</span>
+        </div>
+        <div class="ex-hint">tap to reveal</div>
+        <div class="ex-info">
+          <span class="meaning">Identity through being seen.</span>
+          <p>Confidence is built when this person can express, perform, lead. They thrive on warmth and recognition — not vanity, but vitality.</p>
+        </div>
+      </div>
+      <div class="ex-card cyan" onclick="toggleCard(this)" role="button" aria-expanded="false">
+        <div class="ex-art">
+          <div class="ex-emoji">💬</div>
+          <div class="ex-card-name">Sun in Gemini</div>
+          <span class="pos-badge">Sign · Mutable Air</span>
+        </div>
+        <div class="ex-hint">tap to reveal</div>
+        <div class="ex-info">
+          <span class="meaning">Identity through ideas.</span>
+          <p>Self-worth grows from learning, talking, connecting dots. They feel most themselves with a question in front of them and someone to think with.</p>
+        </div>
+      </div>
+      <div class="ex-card gold" onclick="toggleCard(this)" role="button" aria-expanded="false">
+        <div class="ex-art">
+          <div class="ex-emoji">⛰️</div>
+          <div class="ex-card-name">Sun in Capricorn</div>
+          <span class="pos-badge">Sign · Cardinal Earth</span>
+        </div>
+        <div class="ex-hint">tap to reveal</div>
+        <div class="ex-info">
+          <span class="meaning">Identity through achievement.</span>
+          <p>This person earns confidence through structure and slow climbs. The Sun answers "who am I?" with: someone who builds something that lasts.</p>
+        </div>
+      </div>
+    </div>
+    <button class="synth-btn" onclick="toggleSynth(this,'syn-sun')">
+      <span class="arr">›</span> See the synthesis
+    </button>
+    <div class="synth-box" id="syn-sun">
+      <p class="synth-text">Same luminary, three completely different lives. The Sun's <em>sign</em> colours the energy, but a Leo Sun in the 4th house is private warmth at home — while a Capricorn Sun in the 10th is a public reputation. Both are valid expressions of "who am I." Read all three layers, always.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S5 DIVIDER MOON -->
+<section class="div-block" id="moon">
+  <div class="blob blob-cyan-r"></div>
+  <div class="blob blob-purple-l" style="left:-120px;top:80px;width:380px;height:380px;background:#7B6FE8;filter:blur(80px);opacity:.20;border-radius:50%;position:absolute"></div>
+  <div class="div-inner fade">
+    <div>
+      <span class="eyebrow-big">— second luminary</span>
+      <h2>Moon<br>how you feel</h2>
+    </div>
+    <div class="div-art">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+        <defs>
+          <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#7B6FE8" stop-opacity=".50"/>
+            <stop offset="100%" stop-color="#7B6FE8" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="110" cy="110" r="100" fill="url(#moonGlow)"/>
+        <!-- moon phases vertical -->
+        <g transform="translate(110,30)">
+          <circle r="9" fill="#4FC3F7" fill-opacity=".30" stroke="#4FC3F7" stroke-width="1"/>
+        </g>
+        <g transform="translate(110,60)">
+          <circle r="11" fill="#4FC3F7" fill-opacity=".40" stroke="#4FC3F7" stroke-width="1"/>
+          <path d="M -3 -8 a 8 8 0 1 0 0 16 a 6 8 0 1 1 0 -16 z" fill="#4FC3F7"/>
+        </g>
+        <!-- main moon center -->
+        <g transform="translate(110,110)">
+          <circle r="36" fill="#7B6FE8" fill-opacity=".22" stroke="#7B6FE8" stroke-width="1.6"/>
+          <path d="M 10 -28 a 30 30 0 1 0 0 56 a 22 30 0 1 1 0 -56 z" fill="#7B6FE8"/>
+          <circle cx="-6" cy="-12" r="1.6" fill="#7B6FE8" opacity=".7"/>
+          <circle cx="-2" cy="6" r="1.2" fill="#7B6FE8" opacity=".7"/>
+          <circle cx="-10" cy="14" r="1" fill="#7B6FE8" opacity=".5"/>
+        </g>
+        <g transform="translate(110,160)">
+          <circle r="11" fill="#4FC3F7" fill-opacity=".40" stroke="#4FC3F7" stroke-width="1"/>
+          <path d="M 3 -8 a 8 8 0 1 1 0 16 a 6 8 0 1 0 0 -16 z" fill="#4FC3F7"/>
+        </g>
+        <g transform="translate(110,190)">
+          <circle r="9" fill="#4FC3F7" fill-opacity=".30" stroke="#4FC3F7" stroke-width="1"/>
+        </g>
+        <!-- stars -->
+        <circle cx="40" cy="50" r="1.4" fill="#FFD54F" opacity=".7"/>
+        <circle cx="180" cy="80" r="1.2" fill="#FFD54F" opacity=".6"/>
+        <circle cx="50" cy="170" r="1.6" fill="#FFD54F" opacity=".7"/>
+        <circle cx="184" cy="180" r="1.2" fill="#FFD54F" opacity=".6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- S5a MOON CONTENT -->
+<section>
+  <div class="fade">
+    <span class="eyebrow">Section 03 · Moon</span>
+    <h3 style="margin-bottom:14px">Emotion, comfort, and the inner child</h3>
+    <p class="sec-sub">The Moon represents the emotional world and subconscious patterns. It shows how a person feels, reacts, and what creates a sense of safety. It reflects the inner child and early conditioning — and defines how a person restores energy and handles stress.</p>
+  </div>
+
+  <div class="spread-grid fade">
+    <div class="pos a open" id="pos-moon-feel" onclick="togglePos('moon-feel')" role="button" aria-expanded="true">
+      <span class="glyph">🌊</span>
+      <span class="badge">Feelings</span>
+      <h3>How I respond</h3>
+      <p class="pos-q">Emotion · sensitivity · reactions</p>
+      <div class="pos-detail"><div class="pos-detail-inner">
+        The Moon governs emotional weather: how feelings rise, peak, and settle. It is reaction more than thought, mood more than mind.
+        <ul>
+          <li>Emotions and inner world</li>
+          <li>Reactions and sensitivity</li>
+          <li>Emotional memory</li>
+        </ul>
+      </div></div>
+      <span class="pos-toggle">tap to toggle</span>
+    </div>
+    <div class="pos t" id="pos-moon-need" onclick="togglePos('moon-need')" role="button" aria-expanded="false">
+      <span class="glyph">🪺</span>
+      <span class="badge">Needs</span>
+      <h3>What I need</h3>
+      <p class="pos-q">Comfort · safety · belonging</p>
+      <div class="pos-detail"><div class="pos-detail-inner">
+        Beneath every reaction is a need. The Moon names what soothes the nervous system — the conditions under which a person can finally rest.
+        <ul>
+          <li>Emotional needs and comfort</li>
+          <li>Sense of safety and belonging</li>
+          <li>Subconscious patterns</li>
+        </ul>
+      </div></div>
+      <span class="pos-toggle">tap to toggle</span>
+    </div>
+    <div class="pos f" id="pos-moon-rhy" onclick="togglePos('moon-rhy')" role="button" aria-expanded="false">
+      <span class="glyph">🕰️</span>
+      <span class="badge">Rhythm</span>
+      <h3>How I refuel</h3>
+      <p class="pos-q">Habits · daily rhythm · recovery</p>
+      <div class="pos-detail"><div class="pos-detail-inner">
+        The Moon is the everyday. Habits, rituals, the small repeating things — and the way a person comes back to themselves after a hard day.
+        <ul>
+          <li>Habits and daily rhythm</li>
+          <li>Stress recovery</li>
+          <li>Inner child patterns</li>
+        </ul>
+      </div></div>
+      <span class="pos-toggle">tap to toggle</span>
+    </div>
+  </div>
+
+  <div class="when-box fade">
+    <span class="when-label">The Moon answers — how do I feel, and what do I need to feel safe?</span>
+    <div class="signal-list">
+      <div class="sig green">Moon in <strong>Taurus</strong> — comfort in stability, routine, physical pleasure.</div>
+      <div class="sig coral">Moon in <strong>Sagittarius</strong> — needs freedom, movement, space — even daily.</div>
+      <div class="sig magenta">Moon in <strong>Scorpio</strong> — deep, intense emotions and strong inner reactions.</div>
+      <div class="sig cyan">Moon in <strong>4th house</strong> — strong connection to home and family.</div>
+    </div>
+  </div>
+
+  <!-- MOON EXAMPLES -->
+  <div class="ex-block fade" style="margin-top:48px">
+    <span class="ex-q">"Two people, same stressful week — why does one need a long bath and the other a long drive?"</span>
+    <div class="ex-grid">
+      <div class="ex-card green" onclick="toggleCard(this)" role="button" aria-expanded="false">
+        <div class="ex-art">
+          <div class="ex-emoji">🌿</div>
+          <div class="ex-card-name">Moon in Taurus</div>
+          <span class="pos-badge">Pos · Comfort</span>
+        </div>
+        <div class="ex-hint">tap to reveal</div>
+        <div class="ex-info">
+          <span class="meaning">Restored by the senses.</span>
+          <p>Soft fabric, slow food, a steady routine. This Moon needs the body to feel safe before the heart can settle. Comfort is non-negotiable.</p>
+        </div>
+      </div>
+      <div class="ex-card coral" onclick="toggleCard(this)" role="button" aria-expanded="false">
+        <div class="ex-art">
+          <div class="ex-emoji">🏔️</div>
+          <div class="ex-card-name">Moon in Sagittarius</div>
+          <span class="pos-badge">Pos · Space</span>
+        </div>
+        <div class="ex-hint">tap to reveal</div>
+        <div class="ex-info">
+          <span class="meaning">Restored by the horizon.</span>
+          <p>This Moon needs movement and possibility. Stuck routines feel like cages. Even a walk around the block can reset the whole nervous system.</p>
+        </div>
+      </div>
+      <div class="ex-card magenta" onclick="toggleCard(this)" role="button" aria-expanded="false">
+        <div class="ex-art">
+          <div class="ex-emoji">🌑</div>
+          <div class="ex-card-name">Moon in Scorpio</div>
+          <span class="pos-badge">Pos · Depth</span>
+        </div>
+        <div class="ex-hint">tap to reveal</div>
+        <div class="ex-info">
+          <span class="meaning">Restored by depth.</span>
+          <p>Surface conversation drains this Moon. They need at least one place — one person, one ritual — where the real intensity is welcome.</p>
+        </div>
+      </div>
+    </div>
+    <button class="synth-btn" onclick="toggleSynth(this,'syn-moon')">
+      <span class="arr">›</span> See the synthesis
+    </button>
+    <div class="synth-box" id="syn-moon">
+      <p class="synth-text">"Self-care" looks completely different across these three. The Moon tells you the actual ingredients of a person's reset — not what should work, but what does. Recommending a bubble bath to a Sagittarius Moon is a mismatch by design.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S6 DIVIDER ASCENDANT -->
+<section class="div-block" id="ascendant">
+  <div class="blob blob-magenta-l"></div>
+  <div class="blob blob-green-r"></div>
+  <div class="div-inner fade">
+    <div>
+      <span class="eyebrow-big">— the cusp of the 1st house</span>
+      <h2>Ascendant<br>how you appear</h2>
+    </div>
+    <div class="div-art">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+        <defs>
+          <radialGradient id="ascGlow" cx="50%" cy="80%" r="60%">
+            <stop offset="0%" stop-color="#FFD54F" stop-opacity=".55"/>
+            <stop offset="60%" stop-color="#E040FB" stop-opacity=".18"/>
+            <stop offset="100%" stop-color="#E040FB" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="110" cy="110" r="100" fill="url(#ascGlow)"/>
+        <!-- horizon line -->
+        <line x1="20" y1="150" x2="200" y2="150" stroke="#E040FB" stroke-width="1.4"/>
+        <line x1="10" y1="160" x2="210" y2="160" stroke="#E040FB" stroke-width="1" stroke-opacity=".4" stroke-dasharray="3 4"/>
+        <!-- rising sun -->
+        <path d="M 60 150 a 50 50 0 0 1 100 0 z" fill="#FFD54F" fill-opacity=".30" stroke="#FFD54F" stroke-width="1.6"/>
+        <circle cx="110" cy="150" r="34" fill="#E040FB" fill-opacity=".40"/>
+        <circle cx="110" cy="150" r="14" fill="#FFD54F"/>
+        <!-- rays -->
+        <g stroke="#FFD54F" stroke-width="1.4" stroke-linecap="round">
+          <line x1="110" y1="80" x2="110" y2="68"/>
+          <line x1="70" y1="100" x2="60" y2="92"/>
+          <line x1="150" y1="100" x2="160" y2="92"/>
+          <line x1="48" y1="130" x2="38" y2="128"/>
+          <line x1="172" y1="130" x2="182" y2="128"/>
+        </g>
+        <!-- 1st house cusp marker -->
+        <g transform="translate(20,150)">
+          <line x1="0" y1="0" x2="0" y2="-22" stroke="#E040FB" stroke-width="1.6" stroke-linecap="round"/>
+          <text x="-6" y="-30" fill="#E040FB" font-family="Lora, serif" font-style="italic" font-size="11" opacity=".8">ASC</text>
+        </g>
+        <!-- stars above -->
+        <circle cx="40" cy="40" r="1.4" fill="#E040FB" opacity=".8"/>
+        <circle cx="180" cy="50" r="1.2" fill="#E040FB" opacity=".7"/>
+        <circle cx="80" cy="30" r="1" fill="#FFD54F" opacity=".7"/>
+        <circle cx="160" cy="32" r="1" fill="#FFD54F" opacity=".7"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- S6a ASCENDANT CONTENT -->
+<section>
+  <div class="fade">
+    <span class="eyebrow">Section 04 · Ascendant</span>
+    <h3 style="margin-bottom:14px">First contact, not full character</h3>
+    <p class="sec-sub">The Ascendant is not a planet — it is the cusp of the 1st house and marks the beginning of the chart. It shapes appearance, body language, and the way a person enters new situations. It is the outer layer that is visible <em>before</em> deeper traits are revealed.</p>
+  </div>
+
+  <div class="spread-grid fade">
+    <div class="pos f open" id="pos-asc-first" onclick="togglePos('asc-first')" role="button" aria-expanded="true">
+      <span class="glyph">👋</span>
+      <span class="badge">First contact</span>
+      <h3>The opening move</h3>
+      <p class="pos-q">First impression · body language</p>
+      <div class="pos-detail"><div class="pos-detail-inner">
+        How a person walks into a room and what people notice in the first sixty seconds. The signal sent before a single word is exchanged.
+        <ul>
+          <li>First impression</li>
+          <li>Appearance and body language</li>
+          <li>Behaviour in new situations</li>
+        </ul>
+      </div></div>
+      <span class="pos-toggle">tap to toggle</span>
+    </div>
+    <div class="pos a" id="pos-asc-mask" onclick="togglePos('asc-mask')" role="button" aria-expanded="false">
+      <span class="glyph">🎭</span>
+      <span class="badge">Social mask</span>
+      <h3>How I show up</h3>
+      <p class="pos-q">Self-presentation · interaction style</p>
+      <div class="pos-detail"><div class="pos-detail-inner">
+        Not fake — adaptive. The Ascendant is the reflex that helps a person navigate strangers and new environments before deeper traits land.
+        <ul>
+          <li>Social mask and self-presentation</li>
+          <li>Natural style of interaction</li>
+          <li>Reflex in unfamiliar settings</li>
+        </ul>
+      </div></div>
+      <span class="pos-toggle">tap to toggle</span>
+    </div>
+    <div class="pos t" id="pos-asc-app" onclick="togglePos('asc-app')" role="button" aria-expanded="false">
+      <span class="glyph">🚪</span>
+      <span class="badge">Approach</span>
+      <h3>How I begin</h3>
+      <p class="pos-q">Approach to life · new experiences</p>
+      <div class="pos-detail"><div class="pos-detail-inner">
+        The instinctive starting point. How a person reacts to anything new — a job, a city, a conversation — before they have time to think it through.
+        <ul>
+          <li>Approach to life</li>
+          <li>Reaction to new experiences</li>
+          <li>Default opening reflex</li>
+        </ul>
+      </div></div>
+      <span class="pos-toggle">tap to toggle</span>
+    </div>
+  </div>
+
+  <div class="when-box fade">
+    <span class="when-label">The Ascendant answers — how do others see me at first contact?</span>
+    <div class="signal-list">
+      <div class="sig coral">Ascendant in <strong>Leo</strong> — perceived as confident, expressive, noticeable.</div>
+      <div class="sig green">Ascendant in <strong>Virgo</strong> — perceived as reserved, attentive, detail-oriented.</div>
+      <div class="sig magenta">Ascendant in <strong>Scorpio</strong> — perceived as intense, private, emotionally controlled.</div>
+      <div class="sig cyan"><strong>Mars in 1st house</strong> — adds intensity and directness to whatever the Ascendant sign is doing.</div>
+    </div>
+  </div>
+
+  <div class="concept-box fade" style="margin-top:30px">
+    <span class="lead-em">Important — the Ascendant is not the only signal in the 1st house.</span>
+    Planets sitting in the 1st house also shape appearance, behaviour, and how a person is perceived. <strong>Mars in the 1st</strong> adds intensity and directness. <strong>Venus in the 1st</strong> softens the image and adds charm. Always read the cusp <em>plus</em> any planets in the house.
+    <span class="accent-line">The Ascendant opens the door. The 1st house planets walk through it with you.</span>
+  </div>
+</section>
+
+<!-- TRINITY VISUAL RECAP -->
+<section>
+  <div class="fade">
+    <span class="eyebrow">Putting it together</span>
+    <h3 style="margin-bottom:14px;font-family:'Lora',serif;font-size:1.5rem">The Big 3 — in one picture</h3>
+    <p class="sec-sub">Three points. Three different jobs. Together — a complete portrait of how a person thinks, feels, and acts.</p>
+  </div>
+  <div class="trinity fade">
+    <div class="trin-card sun">
+      <div class="trin-art">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="sunsetSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2a1f3d"/>
+              <stop offset="40%" stop-color="#7d2e44"/>
+              <stop offset="75%" stop-color="#E8604C"/>
+              <stop offset="100%" stop-color="#FFD54F"/>
+            </linearGradient>
+            <linearGradient id="sunsetSea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3a1e2e"/>
+              <stop offset="100%" stop-color="#0c1118"/>
+            </linearGradient>
+          </defs>
+          <rect width="200" height="200" fill="url(#sunsetSky)"/>
+          <circle cx="100" cy="180" r="22" fill="#FFD54F" fill-opacity=".9"/>
+          <rect y="200" width="200" height="100" fill="url(#sunsetSea)"/>
+          <ellipse cx="100" cy="208" rx="40" ry="3" fill="#FFD54F" fill-opacity=".4"/>
+          <line x1="0" y1="200" x2="200" y2="200" stroke="#E8604C" stroke-opacity=".5" stroke-width="1"/>
+          <circle cx="40" cy="50" r="1" fill="#FFD54F" opacity=".7"/>
+          <circle cx="160" cy="40" r="1.2" fill="#FFD54F" opacity=".6"/>
+        </svg>
+      </div>
+      <div class="trin-cap">
+        <em>☀ Sun</em>
+        The Sun shows who you are
+      </div>
+    </div>
+    <div class="trin-card moon">
+      <div class="trin-art">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="moonSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1a2a4a"/>
+              <stop offset="60%" stop-color="#4a7ab8"/>
+              <stop offset="100%" stop-color="#a8d0f0"/>
+            </linearGradient>
+          </defs>
+          <rect width="200" height="300" fill="url(#moonSky)"/>
+          <!-- mountain layer back -->
+          <path d="M0 200 L40 140 L70 175 L110 110 L150 160 L200 130 L200 300 L0 300 Z" fill="#3a5a8a" fill-opacity=".7"/>
+          <!-- mountain layer middle -->
+          <path d="M0 230 L30 190 L60 215 L100 175 L140 210 L180 195 L200 215 L200 300 L0 300 Z" fill="#2a4068"/>
+          <!-- mountain layer front -->
+          <path d="M0 260 L40 235 L80 245 L120 230 L160 250 L200 240 L200 300 L0 300 Z" fill="#1a2840"/>
+          <!-- snow caps -->
+          <path d="M100 110 L96 122 L104 122 Z" fill="#f0ebe0" fill-opacity=".7"/>
+          <path d="M40 140 L36 152 L44 152 Z" fill="#f0ebe0" fill-opacity=".5"/>
+          <!-- crescent moon -->
+          <g transform="translate(150,55)">
+            <path d="M 4 -14 a 14 14 0 1 0 0 28 a 10 14 0 1 1 0 -28 z" fill="#f0ebe0" fill-opacity=".95"/>
+          </g>
+          <!-- light rays -->
+          <line x1="100" y1="50" x2="100" y2="170" stroke="#f0ebe0" stroke-opacity=".25" stroke-width="40" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="trin-cap">
+        <em>☾ Moon</em>
+        The Moon shows how you feel
+      </div>
+    </div>
+    <div class="trin-card asc">
+      <div class="trin-art">
+        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="hillSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1a3a4a"/>
+              <stop offset="60%" stop-color="#3a6e6a"/>
+              <stop offset="100%" stop-color="#88b88a"/>
+            </linearGradient>
+            <linearGradient id="hillField" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3b8a4a"/>
+              <stop offset="100%" stop-color="#1a4828"/>
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" fill="url(#hillSky)"/>
+          <!-- distant hills -->
+          <path d="M0 160 Q50 130 100 150 T200 140 L200 200 L0 200 Z" fill="#4a7858" fill-opacity=".6"/>
+          <!-- middle hills -->
+          <path d="M0 180 Q40 155 90 175 T200 165 L200 220 L0 220 Z" fill="#3a6848" fill-opacity=".8"/>
+          <!-- foreground rolling hills -->
+          <path d="M0 220 Q50 195 100 210 T200 200 L200 300 L0 300 Z" fill="url(#hillField)"/>
+          <!-- single tree -->
+          <g transform="translate(140,205)">
+            <line x1="0" y1="0" x2="0" y2="-12" stroke="#1a2818" stroke-width="1.4"/>
+            <ellipse cx="0" cy="-15" rx="6" ry="8" fill="#1a3820"/>
+          </g>
+          <!-- soft clouds -->
+          <ellipse cx="60" cy="50" rx="22" ry="5" fill="#f0ebe0" fill-opacity=".25"/>
+          <ellipse cx="140" cy="80" rx="18" ry="4" fill="#f0ebe0" fill-opacity=".20"/>
+        </svg>
+      </div>
+      <div class="trin-cap">
+        <em>↑ Ascendant</em>
+        The Ascendant shows how you appear
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 DIVIDER PRACTICE -->
+<section class="div-block" id="practice">
+  <div class="blob blob-green-r"></div>
+  <div class="blob blob-coral-r" style="left:-120px;top:50px;right:auto;background:#E8604C;width:380px;height:380px;filter:blur(80px);opacity:.18;border-radius:50%;position:absolute"></div>
+  <div class="fade">
+    <span class="eyebrow-big">— now apply it</span>
+    <h2>Practice<br>your Big 3</h2>
+  </div>
+</section>
+
+<!-- PRACTICE CONTENT -->
+<section>
+  <div class="fade">
+    <span class="eyebrow">Section 05 · Practice</span>
+    <h3 style="margin-bottom:14px">Theory holds. Practice makes it stick.</h3>
+    <p class="sec-sub">Five short exercises. They get progressively more demanding — from quick recognition to a full personality synthesis. Take them in order. Skip nothing.</p>
+    <div class="practice-intro">
+      <span class="em">A note before you start.</span> Adult learning sticks when it is <strong>active</strong>: you retrieve information instead of re-reading it, you connect new ideas to your own life, and you receive immediate feedback. That is what this section is for. Pen and notebook optional but recommended.
+    </div>
+  </div>
+
+  <!-- EXERCISE 1: KNOWLEDGE CHECK -->
+  <div class="exercise fade">
+    <div class="exercise-head">
+      <div class="exercise-num">1</div>
+      <span class="exercise-tag">Active recall · 2 min</span>
+    </div>
+    <h3>Quick check — do the basics hold?</h3>
+    <p class="ex-prompt">Three short questions. Pick the answer you believe most. Feedback appears immediately — wrong answers teach as much as right ones.</p>
+
+    <div class="q-block" data-correct="b">
+      <div class="q-question"><span class="qn">Q1.</span>Which two points are called the Luminaries?</div>
+      <div class="q-options">
+        <button class="q-opt" data-key="a" onclick="answerQ(this)"><span class="marker">A</span>Sun and Ascendant</button>
+        <button class="q-opt" data-key="b" onclick="answerQ(this)"><span class="marker">B</span>Sun and Moon</button>
+        <button class="q-opt" data-key="c" onclick="answerQ(this)"><span class="marker">C</span>Moon and Ascendant</button>
+      </div>
+      <div class="q-feedback">
+        <strong>The Luminaries are the Sun and Moon.</strong> They are the two main sources of light in the chart and are always analysed first. The Ascendant is not a planet — it is the cusp of the 1st house.
+      </div>
+    </div>
+
+    <div class="q-block" data-correct="c">
+      <div class="q-question"><span class="qn">Q2.</span>"How do I feel and what do I need to feel safe?" — which point answers this?</div>
+      <div class="q-options">
+        <button class="q-opt" data-key="a" onclick="answerQ(this)"><span class="marker">A</span>Sun</button>
+        <button class="q-opt" data-key="b" onclick="answerQ(this)"><span class="marker">B</span>Ascendant</button>
+        <button class="q-opt" data-key="c" onclick="answerQ(this)"><span class="marker">C</span>Moon</button>
+      </div>
+      <div class="q-feedback">
+        <strong>The Moon.</strong> It rules emotional needs, comfort, sense of safety, and the inner child. The Sun answers "who am I?", the Ascendant answers "how do I appear?".
+      </div>
+    </div>
+
+    <div class="q-block" data-correct="b">
+      <div class="q-question"><span class="qn">Q3.</span>You read a chart only by the Ascendant <em>sign</em> and stop there. What did you miss?</div>
+      <div class="q-options">
+        <button class="q-opt" data-key="a" onclick="answerQ(this)"><span class="marker">A</span>Nothing — the sign is enough</button>
+        <button class="q-opt" data-key="b" onclick="answerQ(this)"><span class="marker">B</span>Planets in the 1st house</button>
+        <button class="q-opt" data-key="c" onclick="answerQ(this)"><span class="marker">C</span>The Moon's house</button>
+      </div>
+      <div class="q-feedback">
+        <strong>Planets in the 1st house.</strong> Mars in the 1st adds intensity and directness; Venus in the 1st softens the image and adds charm. The Ascendant opens the door — the planets walk through it.
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCISE 2: MATCHING -->
+  <div class="exercise fade">
+    <div class="exercise-head">
+      <div class="exercise-num">2</div>
+      <span class="exercise-tag">Pattern matching · 4 min</span>
+    </div>
+    <h3>Place each keyword in its home</h3>
+    <p class="ex-prompt">Click a keyword from the pool to drop it into the Sun, Moon, or Ascendant column. After all chips are placed, hit <em>Check</em>. Reset and try again as many times as you need.</p>
+
+    <div class="match-wrap">
+      <div>
+        <span class="eyebrow" style="margin-bottom:14px">Keyword pool</span>
+        <div class="match-pool" id="matchPool">
+          <button class="chip" data-cat="sun" onclick="placeChip(this)">Willpower</button>
+          <button class="chip" data-cat="moon" onclick="placeChip(this)">Emotional memory</button>
+          <button class="chip" data-cat="asc" onclick="placeChip(this)">First impression</button>
+          <button class="chip" data-cat="sun" onclick="placeChip(this)">Self-worth</button>
+          <button class="chip" data-cat="moon" onclick="placeChip(this)">Daily rhythm</button>
+          <button class="chip" data-cat="asc" onclick="placeChip(this)">Body language</button>
+          <button class="chip" data-cat="sun" onclick="placeChip(this)">Life direction</button>
+          <button class="chip" data-cat="moon" onclick="placeChip(this)">Sense of safety</button>
+          <button class="chip" data-cat="asc" onclick="placeChip(this)">Social mask</button>
+          <button class="chip" data-cat="sun" onclick="placeChip(this)">Creative expression</button>
+          <button class="chip" data-cat="moon" onclick="placeChip(this)">Inner child</button>
+          <button class="chip" data-cat="asc" onclick="placeChip(this)">Approach to new things</button>
+        </div>
+      </div>
+
+      <div class="match-buckets">
+        <div class="bucket sun" data-cat="sun">
+          <div class="bucket-head">
+            <span class="bucket-glyph">☀️</span>
+            <div class="bucket-name">Sun<small>identity · direction · expression</small></div>
+          </div>
+          <div class="bucket-content" id="bucket-sun"></div>
+        </div>
+        <div class="bucket moon" data-cat="moon">
+          <div class="bucket-head">
+            <span class="bucket-glyph">🌙</span>
+            <div class="bucket-name">Moon<small>emotion · need · rhythm</small></div>
+          </div>
+          <div class="bucket-content" id="bucket-moon"></div>
+        </div>
+        <div class="bucket asc" data-cat="asc">
+          <div class="bucket-head">
+            <span class="bucket-glyph">🚪</span>
+            <div class="bucket-name">Ascendant<small>first impression · social mask</small></div>
+          </div>
+          <div class="bucket-content" id="bucket-asc"></div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:12px;font-size:.86rem;color:var(--cream-40);font-style:italic">After clicking a chip, click any bucket below to drop it there.</p>
+
+    <div class="match-actions">
+      <button class="btn-primary" onclick="checkMatch()">Check answers</button>
+      <button class="btn-ghost" onclick="resetMatch()">Reset</button>
+    </div>
+    <div class="match-result" id="matchResult"></div>
+  </div>
+
+  <!-- EXERCISE 3: SCENARIO -->
+  <div class="exercise fade">
+    <div class="exercise-head">
+      <div class="exercise-num">3</div>
+      <span class="exercise-tag">Application · 5 min</span>
+    </div>
+    <h3>Read a chart fragment</h3>
+    <p class="ex-prompt">Below are three Big-3 placements for one person. Read them, form your own one-sentence reading, then reveal the model interpretation and compare.</p>
+
+    <div class="scenario-card">
+      <div class="scenario-meta">
+        <span class="meta-pill sun">☀ Sun in Capricorn · 10th house</span>
+        <span class="meta-pill moon">☾ Moon in Cancer · 4th house</span>
+        <span class="meta-pill asc">↑ Ascendant in Libra</span>
+      </div>
+      <p class="scenario-q">"At work, she's known for hitting deadlines. At home, she lights candles. New people always describe her as <em>polite</em>." — what's the Big 3 reading?</p>
+
+      <div class="scenario-options">
+        <button class="q-opt" data-key="a" onclick="answerScn(this,1)"><span class="marker">A</span>Driven public identity, soft inner life, diplomatic first impression — the inside and outside almost contradict each other.</button>
+        <button class="q-opt" data-key="b" onclick="answerScn(this,1)"><span class="marker">B</span>Loud personality across all three — career, home, and social settings.</button>
+        <button class="q-opt" data-key="c" onclick="answerScn(this,1)"><span class="marker">C</span>Closed off in every area of life.</button>
+      </div>
+
+      <div class="scenario-reveal" id="scn1-reveal">
+        <h4>Model interpretation</h4>
+        <p><strong>A is closest.</strong> Sun in Capricorn / 10th = identity built through career and visible achievement. Moon in Cancer / 4th = emotional needs are met at home, near family, in soft rituals. Ascendant in Libra = the social opening is gracious, balanced, easy to like.</p>
+        <p>Reading the three together: ambition outside, tenderness inside, charm at the door. None of these contradict — they are three layers of the same person.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCISE 4: SELF-REFLECTION -->
+  <div class="exercise fade">
+    <div class="exercise-head">
+      <div class="exercise-num">4</div>
+      <span class="exercise-tag">Self-reflection · 6 min</span>
+    </div>
+    <h3>Map your own Big 3 — by feel</h3>
+    <p class="ex-prompt">You don't need software for this. Answer the three prompts honestly in 1–2 sentences each. Then click <em>Build my profile</em> to see your answers laid out as a Big 3 reading you wrote yourself.</p>
+
+    <div class="reflect-grid">
+      <div class="reflect-card sun">
+        <span class="glyph-mini">☀️</span>
+        <h4>Sun</h4>
+        <p class="reflect-q">When are you most yourself? What activity or moment makes you feel <em>this is who I am</em>?</p>
+        <textarea id="ref-sun" placeholder="When I…"></textarea>
+      </div>
+      <div class="reflect-card moon">
+        <span class="glyph-mini">🌙</span>
+        <h4>Moon</h4>
+        <p class="reflect-q">What do you reach for when you're tired, stressed, or sad? What actually makes you feel safe?</p>
+        <textarea id="ref-moon" placeholder="I feel safe when…"></textarea>
+      </div>
+      <div class="reflect-card asc">
+        <span class="glyph-mini">🚪</span>
+        <h4>Ascendant</h4>
+        <p class="reflect-q">How do strangers usually describe you in the first 10 minutes? (Ask a friend if unsure.)</p>
+        <textarea id="ref-asc" placeholder="People often say I seem…"></textarea>
+      </div>
+    </div>
+
+    <div class="reflect-actions">
+      <button class="btn-primary" onclick="buildReflect()">Build my profile</button>
+      <button class="btn-ghost" onclick="clearReflect()">Clear</button>
+      <span style="font-size:.84rem;color:var(--cream-40);font-style:italic">Saved locally on this device.</span>
+    </div>
+
+    <div class="reflect-summary" id="reflectSummary">
+      <h4>Your Big 3 — in your own words</h4>
+      <div class="ref-line sun"><strong>Sun says:</strong> <span id="out-sun">—</span></div>
+      <div class="ref-line moon"><strong>Moon says:</strong> <span id="out-moon">—</span></div>
+      <div class="ref-line asc"><strong>Ascendant says:</strong> <span id="out-asc">—</span></div>
+      <p style="margin-top:18px;font-size:.92rem;color:var(--cream-70);line-height:1.7">When you read the three lines together, you've just done the same job a chart does — name <em>identity</em>, <em>need</em>, and <em>first impression</em>, then look for how they fit. That's the move you'll make on every chart from now on.</p>
+    </div>
+  </div>
+
+  <!-- EXERCISE 5: SYNTHESIS CHECKLIST -->
+  <div class="exercise fade">
+    <div class="exercise-head">
+      <div class="exercise-num">5</div>
+      <span class="exercise-tag">Synthesis · 3 min</span>
+    </div>
+    <h3>Your Big-3 reading checklist</h3>
+    <p class="ex-prompt">A reading isn't done until all six checkboxes below are ticked. Use this every time you open a new chart — even months from now.</p>
+
+    <div class="checklist">
+      <label class="check-item">
+        <input type="checkbox"><span class="cb"></span>
+        <span>I named the <strong>Sun</strong> sign, house, and any major aspect.</span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox"><span class="cb"></span>
+        <span>I named the <strong>Moon</strong> sign, house, and any major aspect.</span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox"><span class="cb"></span>
+        <span>I named the <strong>Ascendant</strong> sign and any planets in the 1st house.</span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox"><span class="cb"></span>
+        <span>I described <em>identity</em>, <em>emotion</em>, and <em>first impression</em> in plain language.</span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox"><span class="cb"></span>
+        <span>I noticed where the three points <em>agree</em> — and where they <em>differ</em>.</span>
+      </label>
+      <label class="check-item">
+        <input type="checkbox"><span class="cb"></span>
+        <span>I wrote one sentence that ties all three into a single picture.</span>
+      </label>
+    </div>
+
+    <div class="concept-box" style="margin-top:30px">
+      <span class="lead-em">The takeaway, in one line.</span>
+      The Sun shows identity and direction. The Moon shows emotions and inner needs. The Ascendant shows external expression and first impression. When combined, they create a complete picture of how a person <strong>thinks</strong>, <strong>feels</strong>, and <strong>acts</strong>.
+      <span class="accent-line">Master the Big 3 first. Every other layer of the chart is built on top of these three.</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="ft-mark">Nebula Academy</span>
+  The Big 3 · Sun, Moon, Ascendant · A foundation module
+</footer>
+
+<script>
+/* 1. Section navigation */
+function goToSection(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* 2. Toggle Big-3 position card */
+function togglePos(id){
+  const el = document.getElementById('pos-' + id);
+  if(!el) return;
+  el.classList.toggle('open');
+  el.setAttribute('aria-expanded', el.classList.contains('open') ? 'true' : 'false');
+}
+
+/* 3. Toggle example card */
+function toggleCard(el){
+  el.classList.toggle('open');
+  el.setAttribute('aria-expanded', el.classList.contains('open') ? 'true' : 'false');
+  const hint = el.querySelector('.ex-hint');
+  if(hint) hint.textContent = el.classList.contains('open') ? 'tap to hide' : 'tap to reveal';
+}
+
+/* 4. Toggle synthesis box */
+function toggleSynth(btn, synId){
+  const box = document.getElementById(synId);
+  if(!box) return;
+  box.classList.toggle('vis');
+  btn.classList.toggle('shown');
+  btn.querySelector('.arr').textContent = btn.classList.contains('shown') ? '›' : '›';
+  const labelText = btn.classList.contains('shown') ? 'Hide synthesis' : 'See the synthesis';
+  btn.childNodes[btn.childNodes.length-1].nodeValue = ' ' + labelText;
+}
+
+/* 5. Quiz answer handler */
+function answerQ(btn){
+  const block = btn.closest('.q-block');
+  if(block.classList.contains('answered')) return;
+  block.classList.add('answered');
+  const correct = block.dataset.correct;
+  const picked = btn.dataset.key;
+  const opts = block.querySelectorAll('.q-opt');
+  opts.forEach(o => {
+    o.disabled = true;
+    if(o.dataset.key === correct) o.classList.add('correct');
+    else if(o.dataset.key === picked) o.classList.add('wrong');
+  });
+  const fb = block.querySelector('.q-feedback');
+  fb.classList.add('show');
+  fb.classList.add(picked === correct ? 'correct' : 'wrong');
+}
+
+/* 6. Scenario answer handler */
+function answerScn(btn, num){
+  const card = btn.closest('.scenario-card');
+  if(card.classList.contains('answered')) return;
+  card.classList.add('answered');
+  const opts = card.querySelectorAll('.q-opt');
+  opts.forEach(o => {
+    o.disabled = true;
+    if(o.dataset.key === 'a') o.classList.add('correct');
+    else if(o === btn) o.classList.add('wrong');
+  });
+  if(btn.dataset.key === 'a') btn.classList.remove('wrong');
+  document.getElementById('scn' + num + '-reveal').classList.add('show');
+}
+
+/* 7. Match exercise */
+let activeChip = null;
+
+function placeChip(chip){
+  if(chip.classList.contains('placed')) return;
+  if(activeChip === chip){
+    activeChip.style.outline = '';
+    activeChip = null;
+    return;
+  }
+  if(activeChip) activeChip.style.outline = '';
+  activeChip = chip;
+  chip.style.outline = '2px solid var(--purple)';
+}
+
+document.querySelectorAll('.bucket').forEach(b => {
+  b.addEventListener('click', () => {
+    if(!activeChip) return;
+    activeChip.style.outline = '';
+    const target = b.querySelector('.bucket-content');
+    target.appendChild(activeChip);
+    activeChip.dataset.placed = b.dataset.cat;
+    activeChip = null;
+  });
+});
+
+function checkMatch(){
+  const chips = document.querySelectorAll('#matchPool .chip, .bucket-content .chip');
+  let correct = 0, total = 0, unplaced = 0;
+  chips.forEach(c => {
+    total++;
+    if(!c.dataset.placed){ unplaced++; return; }
+    c.classList.add('placed');
+    if(c.dataset.placed === c.dataset.cat){
+      c.classList.add('correct');
+      correct++;
+    } else {
+      c.classList.add('wrong');
+    }
+  });
+  const result = document.getElementById('matchResult');
+  result.classList.add('show');
+  if(unplaced > 0){
+    result.innerHTML = '<strong style="color:var(--coral);font-family:Lora,serif;font-style:italic">' + unplaced + ' chip' + (unplaced>1?'s':'') + ' still in the pool.</strong> Place every keyword before checking.';
+    chips.forEach(c => { c.classList.remove('placed','correct','wrong'); });
+    return;
+  }
+  const pct = Math.round((correct/total)*100);
+  let msg;
+  if(pct === 100) msg = '<strong style="color:var(--green);font-family:Lora,serif;font-style:italic">Perfect — ' + correct + '/' + total + '.</strong> The categories are clean: identity belongs to the Sun, emotion and habit to the Moon, first impression to the Ascendant.';
+  else if(pct >= 75) msg = '<strong style="color:var(--gold);font-family:Lora,serif;font-style:italic">' + correct + '/' + total + ' — almost there.</strong> Look at the wrong ones: each is a clue about which two points feel similar to you. Reset and try again.';
+  else msg = '<strong style="color:var(--coral);font-family:Lora,serif;font-style:italic">' + correct + '/' + total + '.</strong> Worth a re-read of the Sun and Moon sections — the difference between "willpower" (Sun) and "rhythm" (Moon) is where most beginners slip. Reset and retry.';
+  result.innerHTML = msg;
+}
+
+function resetMatch(){
+  const pool = document.getElementById('matchPool');
+  document.querySelectorAll('.chip').forEach(c => {
+    c.classList.remove('placed','correct','wrong');
+    delete c.dataset.placed;
+    c.style.outline = '';
+    pool.appendChild(c);
+  });
+  document.getElementById('matchResult').classList.remove('show');
+  activeChip = null;
+}
+
+/* 8. Self-reflection */
+function buildReflect(){
+  const sun = document.getElementById('ref-sun').value.trim();
+  const moon = document.getElementById('ref-moon').value.trim();
+  const asc = document.getElementById('ref-asc').value.trim();
+  if(!sun && !moon && !asc){
+    alert('Fill in at least one of the three prompts.');
+    return;
+  }
+  document.getElementById('out-sun').textContent = sun || '— (not yet written)';
+  document.getElementById('out-moon').textContent = moon || '— (not yet written)';
+  document.getElementById('out-asc').textContent = asc || '— (not yet written)';
+  try{
+    localStorage.setItem('big3-reflect', JSON.stringify({sun, moon, asc}));
+  } catch(e){ /* localStorage may be blocked */ }
+  document.getElementById('reflectSummary').classList.add('show');
+}
+
+function clearReflect(){
+  ['ref-sun','ref-moon','ref-asc'].forEach(id => {
+    const t = document.getElementById(id);
+    if(t) t.value = '';
+  });
+  document.getElementById('reflectSummary').classList.remove('show');
+  try{ localStorage.removeItem('big3-reflect'); } catch(e){}
+}
+
+/* Restore reflection if saved */
+(function(){
+  try{
+    const saved = JSON.parse(localStorage.getItem('big3-reflect') || 'null');
+    if(saved){
+      if(saved.sun) document.getElementById('ref-sun').value = saved.sun;
+      if(saved.moon) document.getElementById('ref-moon').value = saved.moon;
+      if(saved.asc) document.getElementById('ref-asc').value = saved.asc;
+    }
+  } catch(e){}
+})();
+
+/* 9. IntersectionObserver fade-in */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.10 });
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+/* 10. Side-nav active dot + progress bar */
+const sectionIds = ['hero','overview','foundation','sun','moon','ascendant','practice'];
+const dots = document.querySelectorAll('.dot');
+const progBar = document.getElementById('progressBar');
+
+function updateScroll(){
+  const scrollY = window.scrollY + window.innerHeight * 0.35;
+  let activeIdx = 0;
+  for(let i = 0; i < sectionIds.length; i++){
+    const sec = document.getElementById(sectionIds[i]);
+    if(sec && sec.offsetTop <= scrollY) activeIdx = i;
+  }
+  dots.forEach((d, i) => d.classList.toggle('on', i === activeIdx));
+  /* progress */
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  progBar.style.width = pct + '%';
+}
+
+window.addEventListener('scroll', updateScroll, { passive: true });
+updateScroll();
+</script>
+</body>
+</html>
